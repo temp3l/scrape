@@ -6,7 +6,8 @@ const db = require('./db');
 require('events').EventEmitter.prototype._maxListeners = 0;
 
 // 1792 rechtsanwaelte
-// 5062 kanzleien
+// 5062 kanzlei'en
+// 16:00 > 05:00
 const crawler = new Crawler({
 	maxConnections : 1,
 	retries: 20,
@@ -35,6 +36,7 @@ const crawler = new Crawler({
 crawler.on('schedule',function(options){
 	options.proxy = "http://localhost:8118";
 });
+console.log(allPLZS.length);
 
 db.getBad( (err,bads) => {
 	db.getGood( (err,goods) => {
@@ -48,6 +50,6 @@ db.getBad( (err,bads) => {
 			return 'https://www.anwaltsverzeichnis.de/rechtsanwalt?_citycode_search='+plz;
 		})
 		console.log(queue.length);
-		//crawler.queue(queue)
+		crawler.queue(queue)
 	});
 });
