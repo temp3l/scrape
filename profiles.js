@@ -5,7 +5,7 @@ const db = require('./db');
 // 1205 1d622c2f-11a0-48be-bc1d-7fc8a8ab833f
 
 const crawler2 = new Crawler({
-	maxConnections : 30,
+	maxConnections : 20,
 	retries: 20,
 	userAgent: 'Mozilla/6.2',
 	callback : function (error, res, done) {

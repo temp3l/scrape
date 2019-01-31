@@ -43,7 +43,7 @@ const toCSV = () => {
 	fs.writeFileSync('../database_kanzlei.csv', ["type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href"].join('|')+'\n');
 	fs.writeFileSync('../database_rechtsanwalt.csv', ["type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href"].join('|')+'\n');
 
-	redis.lrange('db', 0, -1, (err, entries) => {
+	redis.lrange('db', 0, 100, (err, entries) => {
 		entries.forEach(entry => {
 			let type = entry.split('|')[0];
 			fs.appendFileSync('../database_'+type+'.csv', entry + '\n');	
