@@ -7,8 +7,6 @@ require('events').EventEmitter.prototype._maxListeners = 0;
 
 // 2560 rechtsanwaelte, 7178 kanzlei'en
 // 16:00 > 07:00
-
-
 /*
 	Webscraping for fun ist illegal...
 	Webscraping for profit ist illegaler...
@@ -21,24 +19,28 @@ require('events').EventEmitter.prototype._maxListeners = 0;
 	Einige Requests kamen aus einem privaten WLAN...(nicht meins)
 		Sollte der Besitzer des WLANs eine Anzeige bekommen (wegen Diebstahl + DDOS), könnte ich helfen:
 
-	
 	Datenbank mit 9736 Kontaktdaten von Rechtsanwälten. (no-duplicates, Sample im Anhang).
-		2560 Rechtsanwaelte, 7178 Kanzleien.
-		Es gibt ~28000 Postleitzahlen in DE, das hätte aber zu ~3 Mio. Requests geführt - way too much!
-		Statt nach den PLZs: 12055, 10256, ..., 12060 zu suchen wurden nur die ersten 4 Stellen abgefragt.
-		Also 1205, 1206, 1207, => Das ergab ~8000 PLZs. Davon waren 2826 dem System (anwalts***.de) bekannt.
-		Dadurch, und durch die Reboots, sollte die Datenbank zu etwa 95% vollständig sein!
-
+			2560 Rechtsanwaelte, 7178 Kanzleien.
+			Es gibt ~28000 Postleitzahlen in DE, das hätte aber zu ~3 Mio. Requests geführt - way too much!
+			Statt nach den PLZs: 12055, 10256, ..., 12060 zu suchen wurden nur die ersten 4 Stellen abgefragt.
+			Also 1205, 1206, 1207, => Das ergab ~8000 PLZs. Davon waren 2826 dem System (anwalts***.de) bekannt.
+			Dadurch, und durch die Reboots, sollte die Datenbank zu etwa 90% vollständig sein!
 
 	Scraper-Code
 		Den Scraper sollte man nur "von privat" nutzen, in Verbindung mit TOR+Privoxy+Redis.
-		Erneutes Scrapen benötigt deutlich weniger als 100.000 Requests!
+		Die Websites können sich gegen den Tor-Scraper eigtl. nicht wehren!
+		Erneutes Scrapen benötigt deutlich weniger als 100.000 Requests! (anwaltsv***.de)
 		Linux + Node.js Kenntnisse sind von Vorteil.
 
 
 	Lieferumfang
-		Für 973,60€ gibts die fertige Datenbank als .csv und dazu den Scraper-Code mit Setup-Anleitung.
-		Jegliche rechtliche Konsequenzen somit beim Hacker.
+		Für 973$ gibts die fertige Datenbank als .csv und dazu den Scraper-Code mit Setup-Anleitung.
+		Die Daten enthalten immer den original-Link zum Profil zwecks Überprüfung der Daten.
+		Jegliche rechtliche Konsequenzen somit beim Hacker...
+
+
+	Geschenkt: XXXX Kontaktdaten von anwaltausk***.de (no-duplicates, Sample im Anhang)
+		auskunft.csv hat ein minimal anderes Format und enthält keine FAX-Nummern
 
 */
 

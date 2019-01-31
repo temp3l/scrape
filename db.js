@@ -42,18 +42,28 @@ const markScraped = (name) => {
 const toCSV = () => {
 	fs.writeFileSync('../database_kanzlei.csv', ["type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href"].join('|')+'\n');
 	fs.writeFileSync('../database_rechtsanwalt.csv', ["type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href"].join('|')+'\n');
-
-	redis.lrange('db', 0, 100, (err, entries) => {
+	redis.lrange('db', 0, -1, (err, entries) => {
 		entries.forEach(entry => {
 			let type = entry.split('|')[0];
+			let email = entry.split('|')[7];
 			fs.appendFileSync('../database_'+type+'.csv', entry + '\n');	
 		})
 		console.log('wrote '+entries.length+' database to file: ../database.csv');
-		
 	});
 }
 
-toCSV()
+const auskunft2CSV = () => {
+	fs.writeFileSync('../database_auskunft.csv', [ "plz", "city", "phone", "email", "name", "street", "jobTitle", "special", "gebiete", "href"].join('|')+'\n');
+	redis.lrange('db_auskunft', 0, -1, (err, entries) => {
+		console.log('writing ' + entries.length + ' to ../database_auskunft.csv');
+		entries.forEach(entry => {
+			let email = entry.split('|')[3];
+			fs.appendFileSync('../database_auskunft.csv', entry+'\n');
+		})
+	});
+}
+//auskunft2CSV();
+//toCSV()
 
 module.exports = {
 	saveDetails,
@@ -64,4 +74,5 @@ module.exports = {
 	markGoodPlz,
 	getBad,
 	getGood,
+	auskunft2CSV,
 }
