@@ -63,10 +63,10 @@ c.on('schedule',function(options){
     options.proxy = "http://localhost:8118";
 });
 
-//c.queue(['https://www.anwaltsverzeichnis.de/rechtsanwaelte/rechtsanwalt/rainer_sebel_berlin']);
+//c.queue(['https://www.***sverzeichnis.de/rechtsanwaelte/rechts***/rainer_sebel_berlin']);
 
 const scrapeIT = (profiles) => {
-    let queue = profiles.map( name => 'https://www.anwaltsverzeichnis.de'+name );
+    let queue = profiles.map( name => 'https://www.***sverzeichnis.de'+name );
     c.queue(queue);
     c.on('drain',function(){
         console.log('drained all profiles from sadd');

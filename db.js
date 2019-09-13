@@ -24,10 +24,10 @@ const markBadPlz = (plz) => {
 const markGoodPlz = (plz) => {
 	redis.sadd('goodPLZ', plz);
 }
-const getBad = (done) =>{
+const getBad = (done) => {
 	redis.smembers('badPLZ', done)
 }
-const getGood = (done) =>{
+const getGood = (done) => {
 	redis.smembers('goodPLZ', done)
 }
 
@@ -40,8 +40,8 @@ const markScraped = (name) => {
 }
 
 const toCSV = () => {
-	fs.writeFileSync('../database_kanzlei.csv', ["type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href"].join('|')+'\n');
-	fs.writeFileSync('../database_rechtsanwalt.csv', ["type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href"].join('|')+'\n');
+	fs.writeFileSync('../database_kanzlei.csv', [ "type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href" ].join('|')+'\n');
+	s.writeFileSync('../database_rechts***.csv', [ "type", "plz", "city", "street", "name", "tel", "fax", "email", "gebiete", "website", "href" ].join('|')+'\n');
 	redis.lrange('db', 0, -1, (err, entries) => {
 		entries.forEach(entry => {
 			let type = entry.split('|')[0];
@@ -58,7 +58,18 @@ const auskunft2CSV = () => {
 		console.log('writing ' + entries.length + ' to ../database_auskunft.csv');
 		entries.forEach(entry => {
 			let email = entry.split('|')[3];
-			fs.appendFileSync('../database_auskunft.csv', entry+'\n');
+			let phone = entry.split('|')[2];
+
+			if(email === ''){
+				redis.sismember('auskunft_phone', phone, (err,res)=>{
+					if(res===0){
+						fs.appendFileSync('../database_auskunft.csv', entry+'\n');		
+					}
+				})
+			} else {
+				fs.appendFileSync('../database_auskunft.csv', entry+'\n');
+			}
+			redis.sadd('auskunft_phone', phone, (err,res) => {});
 		})
 	});
 }

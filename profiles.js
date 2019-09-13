@@ -29,15 +29,15 @@ crawler2.on('schedule',function(options){
 	options.proxy = "http://localhost:8118";
 });
 const getMoreUrls = (sid) => {
-	//https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id=4c1df32b-7268-4278-8f96-84e8548798fa&_sort_order=-&_page=1&_firstcall=true
+	//https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id=4c1df32b-7268-4278-8f96-84e8548798fa&_sort_order=-&_page=1&_firstcall=true
 	return [
-	'https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=1&_firstcall=true',
-	'https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=2&_firstcall=true',
-	'https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=3&_firstcall=true',
-	'https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=4&_firstcall=true',
-	'https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=5&_firstcall=true',
-	'https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=6&_firstcall=true',
-	'https://www.anwaltsverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=7&_firstcall=true',
+	'https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=1&_firstcall=true',
+	'https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=2&_firstcall=true',
+	'https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=3&_firstcall=true',
+	'https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=4&_firstcall=true',
+	'https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=5&_firstcall=true',
+	'https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=6&_firstcall=true',
+	'https://www.***sverzeichnis.de/web/get_more_hits.aspx?_session_id='+sid+'&_sort_order=Naehe&_page=7&_firstcall=true',
 	]
 }
 

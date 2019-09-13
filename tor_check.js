@@ -5,7 +5,7 @@ const Redis = require("redis"),  redis = Redis.createClient();
 const db = require('./db');
 require('events').EventEmitter.prototype._maxListeners = 0;
 
-//anwaltssuche?lss%5Bsuggest%5D=Berlin&lss%5Bsubmit%5D=
+//***ssuche?lss%5Bsuggest%5D=Berlin&lss%5Bsubmit%5D=
 
 // initialize from Browser request without search params, insert PHPSESSID here!
 const crawler = new Crawler({

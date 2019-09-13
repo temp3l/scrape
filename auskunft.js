@@ -5,7 +5,7 @@ const Redis = require("redis"),  redis = Redis.createClient();
 const db = require('./db');
 require('events').EventEmitter.prototype._maxListeners = 0;
 
-//anwaltssuche?lss%5Bsuggest%5D=Berlin&lss%5Bsubmit%5D=
+//***ssuche?lss%5Bsuggest%5D=Berlin&lss%5Bsubmit%5D=
 
 // initialize from Browser request without search params, insert PHPSESSID here!
 const crawler = new Crawler({
@@ -48,7 +48,7 @@ const crawler = new Crawler({
 					gebiete: sections.join(', '),
 					email, 
 					phone,
-					href: 'https://anwaltauskunft.de/'+href,
+					href: 'https://***.de/'+href,
 				};
 				
 				saveAuskunft(result);
@@ -61,11 +61,11 @@ const crawler = new Crawler({
 crawler.on('schedule',function(options){
 	options.proxy = "http://localhost:8118";
 });
-//crawler.queue('https://anwaltauskunft.de/anwaltssuche?page=1')
+//crawler.queue('https://***.de/***ssuche?page=1')
 
 let queue = [];
 for (let i=1; i<3700; i++){ // 6178
-	queue.push('https://anwaltauskunft.de/anwaltssuche?page='+i);	
+	queue.push('https://***.de/***ssuche?page='+i);	
 }
 crawler.queue(queue);
 
@@ -81,7 +81,7 @@ const saveAuskunft = (data, next) => {
 }
 
 crawler.on('drain', () =>{
-	setTimeout( ()=>{
+	setTimeout( () => {
 		console.log('all drained, writing csv');
 		db.auskunft2CSV()
 	},1000)
